@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Article Parser</title>
+  <link rel='icon' type='image/png' href='favicon.png'>
+  <link rel='stylesheet' href='styles.css'>
+  <script src='libs/to-markdown.min.js'></script>
+  <script src='libs/showdown.min.js'></script>
+  <script src='libs/jszip.min.js'></script>
+  <script src='engine.js'></script>
+</head>
+<body>
+  <!-- © 2017 OddMorning.github.io -->
+  <div class='container'>
+    <div class='header'>Article Parser<sub>1.0</sub></div>
+    <textarea class='field -main j-field' placeholder='Эта штука помогает подготавливать текст статей для перевода через Google Docs. Необходимо вручную открыть исходный код интересующей страницы и скопировать её HTML код сюда, желательно код одной лишь статьи (например, он может находиться внутри тега <article>). Всю остальную грязную работу сделают кнопочки справа.'></textarea>
+    <div class='controls'>
+      <div class='controls__section -header'>Для Google Docs</div>
+      <div class='controls__section'>
+        <input type='button' class='button j-buttons-HTMLtoMarkdown' value='HTML => Markdown'></input>
+      </div>
+      <div class='controls__section'>
+        <input type='button' class='button j-buttons-exportForGDocs' value='&#128190; Конвертировать в таблицу и скачать'>
+      </div>
+      
+      <div class='controls__section -header'>Из Google Docs</div>
+      <div class='controls__section'>
+        <label class='button'>
+          <input type='file' accept='.zip' class='j-zipSelect' hidden>
+          <div>&#128194; Импорт .zip файла</div>
+        </label>
+      </div>
+      <div class='controls__section'>
+        <input type='button' class='button j-buttons-markdownToHTML' value='Markdown => HTML'></input>
+      </div>
+      
+      <div class='controls__section -header'>
+        Найти и заменить
+        <input type='checkbox' class='controls__headerCheckbox j-replace-useBareRegExp' title='Использовать чистый RegExp'>
+      </div>
+      <div class='controls__section'>
+        <textarea class='field -side j-replace-from' placeholder='Что заменять. Можно использовать ** в качестве аналога (.*?) из регуярок'></textarea>
+      </div>
+      <div class='controls__section'>
+        <textarea class='field -side j-replace-to' placeholder='Чем заменять. Можно использовать $n для подстановки текста, найденного через **'></textarea>
+      </div>
+      <div class='controls__section'>
+        <input type='button' class='button j-buttons-findAndReplace_preview' value='Предпросмотр'></input>
+      </div>
+      <div class='controls__section'>
+        <input type='button' class='button j-buttons-findAndReplace_process' value='Заменить всё'></input>
+      </div>
+      
+      <div class='controls__section -header'>Разное</div>
+      <div class='controls__section'>
+        <label class='button'>
+          <input type='file' class='j-textFileSelect' hidden>
+          <div>&#128194; Открыть текстовый файл</div>
+        </label>
+      </div>
+      <div class='controls__section'>
+        <input type='button' class='button j-buttons-downloadAsText' value='&#128190; Скачать в .txt'></input>
+      </div>
+      <div class='controls__section'>
+        <a class='button' target='_blank' href='//github.com/OddMorning/OddMorning.github.io/blob/master/articleParser/README.md'>Открыть описание на GitHub</a>
+      </div>
+      <div class='controls__section'>
+        <a class='button' href='/'>На главную страницу</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

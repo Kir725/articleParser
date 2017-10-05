@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css?family=Cousine|Source+Sans+Pro:200,300,400&subset=cyrillic');
+
+[hidden] {
+  display: none;
+}
+
+body {
+  background-image: url(background.png);
+  background-color: rgba(0,0,0,.01);
+  background-size: cover;
+  margin: 0;
+  height: 100vh;
+  background-position: center;
+  font-family: 'Source Sans Pro', sans-serif;
+  user-select: none;
+  -moz-user-select: -moz-none; /* У FF значение none работает иначе, поэтому перезапись обязательна */
+  cursor: default;
+}
+
+.container {
+  display: grid;
+  grid-template-areas: 'header header header' 'field field controls';
+  grid-template-rows: min-content 1fr;
+  grid-template-columns: 1fr 1fr 350px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 2em 4em;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.header {
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 2.5em;
+  color: #555;
+  font-weight: 200;
+  padding: .5em 0 .25em;
+  box-sizing: border-box;
+  grid-area: header;
+}
+
+.header sub {
+  font-size: .4em;
+  vertical-align: baseline;
+}
+
+.header sub::before {
+  content: ' ';
+}
+
+.field {
+  font-family: 'Cousine', monospace;
+  border-color: rgba(0, 0, 0, 0.1);
+  padding: .5em;
+}
+.field:focus {
+  outline: none;
+  border-color: #007eff;
+}
+.field.-main {
+  grid-area: field;
+  margin: 10px;
+  margin-right: 0;
+  resize: none;
+}
+.field.-side {
+  border: 0;
+  display: block;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+.field.-side:focus {
+  border: 0;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 1px rgba(0, 126, 255, 0.5), 0 -1px rgba(0, 126, 255, 0.5);
+}
+
+.controls {
+  grid-area: controls;
+  margin: 10px 0;
+  font-weight: 300;
+}
+
+.controls__section {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.controls__section.-header {
+  padding: 1em 0 .25em;
+  font-family: inherit;
+  font-size: 1.4em;
+  font-weight: 400;
+}
+.controls__section.-header:first-child {
+  padding-top: 0;
+}
+
+.controls__section .button {
+  background: transparent;
+  border: none;
+  font: inherit;
+  font-size: 1.1em;
+  white-space: normal;
+  padding: .5em 1em;
+  cursor: pointer;
+  width: 100%;
+  transition: background .1s, box-shadow .1s;
+  box-shadow: none;
+  display: block;
+  box-sizing: border-box;
+}
+
+.controls__section a.button {
+  color: inherit;
+  text-decoration: none;
+}
+
+.controls__section .button:hover {
+  background-color: #FFF;
+}
+
+.controls__section .button:focus {
+  outline: none;
+  box-shadow: 0 1px rgba(0, 126, 255, 0.5), 0 -1px rgba(0, 126, 255, 0.5);
+}
+
+.controls__section .button:active {
+  background-color: #f7f7f7;
+}
+
+.controls__headerCheckbox {
+  position: absolute;
+  margin-top: .75em;
+  right: .75em;
+}
