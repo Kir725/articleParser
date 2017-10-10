@@ -133,6 +133,7 @@ ArticleParser = {
           'picture',
           'source',
           'aside',
+          'main',
         ],
         replacement(content) { return content; },
       }, {
@@ -221,7 +222,7 @@ ArticleParser = {
       //   return `( iframe: ${url} )`;
       // })
 
-      // Странный баг, когда точка, идущая за цифрой, превращается в «\.»
+      // Странный баг (баг ли?), когда точка, идущая за цифрой, превращается в «\.»
       .replace(/(\d)\\\./g, (str, number) => {
         return `${number}.`;
       });
@@ -281,7 +282,7 @@ ArticleParser = {
         urls[id] = url;
       });
 
-      // Делает ссылки кликабельными
+      // Делает их кликабельными
       str = str.replace(/(\])\[#(\d+)\]/g, (str, rest, currID) =>
         `${rest}<a href="${urls[currID]}">[#${currID}]</a>`
       );
@@ -293,6 +294,9 @@ ArticleParser = {
         wrapper = ['<p>', '</p>'],
         rightSide = '',
         result = '';
+
+      // Убирает возможные переносы на новую строку в начале текста (regexpTable захватывает лишние)
+      content = content.trim();
 
       // Если начинается с # (заголовок)
       if (content.startsWith('#')) {
