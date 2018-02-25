@@ -277,7 +277,7 @@ ArticleParser = {
         urlSection = '';
 
       // Превращает список ссылок в объект
-      urlsRaw.forEach(str => {
+      if (urlsRaw) urlsRaw.forEach(str => {
         let [, id, url] = str.match(/\[#(\d+)\]: (.*)/);
         urls[id] = url;
       });
